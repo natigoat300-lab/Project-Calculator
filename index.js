@@ -3,11 +3,11 @@ function add(a, b) {
     return a + b;
 }
 // substract number
-function substract(a,  b) {
+function subtract(a, b) {
     return a - b;
 }
 // multiplay number
-function multiplay(a, b) {
+function multiple(a, b) {
     return a * b;
 }
 // devide number 
@@ -24,9 +24,9 @@ function operate() {
     if (operator == "+") {
         console.log(add(num1, num2))
     }else if (operator == "-") {
-        console.log(substract(num1, num2))
+        console.log(subtract(num1, num2))
     }else if (operator == "*") {
-        console.log(multiplay(num1, num2))
+        console.log(multiple(num1, num2))
     }else if (operator == "/") {
         console.log(divide(num1, num2))
     }
