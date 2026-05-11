@@ -1,3 +1,7 @@
+p {
+    margin: 0px;
+
+}
 body {
     height: 100vh;
     display: flex;
@@ -45,11 +49,17 @@ div button {
     border: 3px solid rgba(103, 99, 99, 0.955);
     border-radius: 20px;
     height: 300px;
-    margin: 15px;
     background-color: rgb(93, 92, 91);
-    
-
+    color: white;
+    font-size: 3rem;
 }
+.display p {
+    display: flex;
+    align-self: self-end;
+    flex: 1;
+    border: solid rgb(139, 137, 137) 2px;
+}
+
 .number {
     background-color: rgb(124, 124, 123);
 }
