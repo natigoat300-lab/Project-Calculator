@@ -13,4 +13,13 @@ function divide(a, b) {
     return a / b;
 }
 
+let num1 = Number("1");
+let operator = "";
+let num2 = Number("4");
 
+function operate() {
+    if (operator == "+") return add(num1, num2);
+    else if (operator == "-") return subtract(num1, num2);
+    else if (operator == "*") return multiply(num1, num2);
+    else if ( operator == "÷") return divide(num1, num2);
+}
