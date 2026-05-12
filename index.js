@@ -24,7 +24,14 @@ function operate() {
     if (operator == "+") return add(n1, n2);
     else if (operator == "-") return subtract(n1, n2);
     else if (operator == "×") return multiply(n1, n2);
-    else if ( operator == "÷") return divide(n1, n2);
+    else if ( operator == "÷") {
+        if (n2 == 0) {
+            return "Division by zero is undefined"
+        }
+        let res = divide(n1, n2);
+        return parseFloat(res.toFixed(3));
+    }
+
 }
 // display user input and calculation result
 const displayResult = document.querySelector('p')
@@ -32,10 +39,20 @@ const displayResult = document.querySelector('p')
 const inputOperator = document.querySelectorAll(".operator")
 inputOperator.forEach(operatorBtns => {
     operatorBtns.addEventListener("click", function(e) {
+        if (num1 !== "" && operator !== "" && num2 !== "") {
+            const result = operate();
+            num1 = String(result); // Result becomes the first number for the next part
+            num2 = "";             // Reset second number
+            displayResult.textContent = num1; 
+        }
+
+        // 2. Regardless of what happened above, update the operator to the one just clicked
         operator = e.target.textContent;
-        displayResult.textContent = `${num1}${operator}${num2}`;
+        
+        //  update display to show "3 +"
+        displayResult.textContent = `${num1}${operator}`;
     })
-})
+})      
 // user input number update
 const inputNumber = document.querySelectorAll(".number")
 inputNumber.forEach(numBtns => {
@@ -63,9 +80,11 @@ equalTo.addEventListener("click", () => {
 )
 // clear number
 const clearNumberBtn = document.querySelector(".clear")
-clearNumberBtn.addEventListener("click", () => {
+clearNumberBtn.addEventListener("click",clearNumber )
+
+function clearNumber() {
     displayResult.textContent = "";
     num1 = "";
     num2 = "";
     operator = "";
-})
+}

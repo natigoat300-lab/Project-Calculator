@@ -54,6 +54,7 @@ div button {
     font-size: 3rem;
 }
 .display p {
+    font-size: 40px;
     display: flex;
     align-self: self-end;
     flex: 1;
