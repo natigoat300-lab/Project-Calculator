@@ -33,7 +33,7 @@ const inputOperator = document.querySelectorAll(".operator")
 inputOperator.forEach(operatorBtns => {
     operatorBtns.addEventListener("click", function(e) {
         operator = e.target.textContent;
-        displayResult.textContent = `${num1}${operator}${num2}`
+        displayResult.textContent = `${num1}${operator}${num2}`;
     })
 })
 // user input number update
@@ -47,17 +47,18 @@ inputNumber.forEach(numBtns => {
             num2 += e.target.textContent;
        }
          displayResult.textContent = `${num1}${operator}${num2}`
-    })
+        })
 })
 // equalt to buttondisplayResult.textContent
 let result = "";
 const equalTo = document.querySelector(".brown")
 equalTo.addEventListener("click", () => {
     result = operate();
-    displayResult.textContent = `${num1}${operator}${num2} = ${result}`
-    num1 = "";
+    displayResult.textContent = `${result}`
+    num1 = result;
     num2 = "";
     operator = "";
+
 }
 )
 // clear number
