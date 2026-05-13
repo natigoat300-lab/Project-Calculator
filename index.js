@@ -23,7 +23,7 @@ function operate() {
     const n2 = Number(num2);
     if (operator == "+") return add(n1, n2);
     else if (operator == "-") return subtract(n1, n2);
-    else if (operator == "×") return mulnumBtnstiply(n1, n2);
+    else if (operator == "x") return multiply(n1, n2);
     else if ( operator == "÷") {
         if (n2 === 0) {
             return "Division by zero is undefined"
@@ -97,4 +97,26 @@ function clearNumber() {
     num2 = "";
     operator = "";
 }
-// float number
+// decimal poing
+const decimalBtn = document.querySelector(".decimal");
+
+decimalBtn.addEventListener("click", function(e) {
+    const dot = e.target.textContent;
+
+    // IF typing the first number
+    if (operator === "") {
+        // Guard Clause: Only add if there isn't a dot already!
+        if (!num1.includes(".")) {
+            num1 += dot;
+        }
+    } 
+    // IF typing the second number
+    else {
+        if (!num2.includes(".")) {
+            num2 += dot;
+        }
+    }
+
+    // Update the screen
+    displayResult.textContent = `${num1}${operator}${num2}`;
+});
