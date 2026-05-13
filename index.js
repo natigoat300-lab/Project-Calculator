@@ -97,3 +97,4 @@ function clearNumber() {
     num2 = "";
     operator = "";
 }
+// float number
