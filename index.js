@@ -23,9 +23,9 @@ function operate() {
     const n2 = Number(num2);
     if (operator == "+") return add(n1, n2);
     else if (operator == "-") return subtract(n1, n2);
-    else if (operator == "×") return multiply(n1, n2);
+    else if (operator == "×") return mulnumBtnstiply(n1, n2);
     else if ( operator == "÷") {
-        if (n2 == 0) {
+        if (n2 === 0) {
             return "Division by zero is undefined"
         }
         let res = divide(n1, n2);
@@ -39,12 +39,15 @@ const displayResult = document.querySelector('p')
 const inputOperator = document.querySelectorAll(".operator")
 inputOperator.forEach(operatorBtns => {
     operatorBtns.addEventListener("click", function(e) {
+        if (num1 === "Division by zero is undefined") {
+            return;
+        }
         if (num1 !== "" && operator !== "" && num2 !== "") {
-            const result = operate();
-            num1 = String(result); // Result becomes the first number for the next part
+            result = operate();
+            num1 = result 
             num2 = "";             // Reset second number
             displayResult.textContent = num1; 
-        }
+        }// Result becomes the first number for the next part
 
         // 2. Regardless of what happened above, update the operator to the one just clicked
         operator = e.target.textContent;
@@ -57,12 +60,18 @@ inputOperator.forEach(operatorBtns => {
 const inputNumber = document.querySelectorAll(".number")
 inputNumber.forEach(numBtns => {
     numBtns.addEventListener("click", function(e) {
-        if (operator == "") {
+         if (result !== "" && operator === "") {
+            num1 = e.target.textContent;
+            result = "";
+            displayResult.textContent = num1;
+         }
+        else if (operator == "") {
             num1 += e.target.textContent;
 
-        }else {
+        }
+        else if (operator !== "") {
             num2 += e.target.textContent;
-       }
+        }
          displayResult.textContent = `${num1}${operator}${num2}`
         })
 })
